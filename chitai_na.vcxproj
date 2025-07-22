@@ -5,9 +5,17 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -24,7 +32,22 @@
     <UseOfMfc>Static</UseOfMfc>
     <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -38,7 +61,13 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
@@ -47,7 +76,15 @@
     <IncludePath>C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um;$(IncludePath)</IncludePath>
     <SourcePath>C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um;$(SourcePath)</SourcePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um;$(IncludePath)</IncludePath>
+    <SourcePath>C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um;$(SourcePath)</SourcePath>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -64,6 +101,27 @@
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
       <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0407</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </Midl>
     <ResourceCompile>
@@ -98,6 +156,31 @@
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0407</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
     <None Include="res\chitai_na.ico" />
@@ -114,6 +197,7 @@
     <ClInclude Include="CWMPSettings.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="resource_lists.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -125,11 +209,229 @@
     <ClCompile Include="CResTree.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="chitai_na.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\1.bmp" />
+    <Image Include="res\10.bmp" />
+    <Image Include="res\100.bmp" />
+    <Image Include="res\101.bmp" />
+    <Image Include="res\102.bmp" />
+    <Image Include="res\103.bmp" />
+    <Image Include="res\104.bmp" />
+    <Image Include="res\105.bmp" />
+    <Image Include="res\106.bmp" />
+    <Image Include="res\107.bmp" />
+    <Image Include="res\108.bmp" />
+    <Image Include="res\109.bmp" />
+    <Image Include="res\11.bmp" />
+    <Image Include="res\110.bmp" />
+    <Image Include="res\111.bmp" />
+    <Image Include="res\112.bmp" />
+    <Image Include="res\113.bmp" />
+    <Image Include="res\114.bmp" />
+    <Image Include="res\115.bmp" />
+    <Image Include="res\116.bmp" />
+    <Image Include="res\117.bmp" />
+    <Image Include="res\118.bmp" />
+    <Image Include="res\119.bmp" />
+    <Image Include="res\12.bmp" />
+    <Image Include="res\120.bmp" />
+    <Image Include="res\121.bmp" />
+    <Image Include="res\122.bmp" />
+    <Image Include="res\123.bmp" />
+    <Image Include="res\124.bmp" />
+    <Image Include="res\125.bmp" />
+    <Image Include="res\126.bmp" />
+    <Image Include="res\127.bmp" />
+    <Image Include="res\128.bmp" />
+    <Image Include="res\129.bmp" />
+    <Image Include="res\13.bmp" />
+    <Image Include="res\130.bmp" />
+    <Image Include="res\131.bmp" />
+    <Image Include="res\132.bmp" />
+    <Image Include="res\133.bmp" />
+    <Image Include="res\134.bmp" />
+    <Image Include="res\135.bmp" />
+    <Image Include="res\136.bmp" />
+    <Image Include="res\137.bmp" />
+    <Image Include="res\138.bmp" />
+    <Image Include="res\139.bmp" />
+    <Image Include="res\14.bmp" />
+    <Image Include="res\140.bmp" />
+    <Image Include="res\141.bmp" />
+    <Image Include="res\142.bmp" />
+    <Image Include="res\143.bmp" />
+    <Image Include="res\144.bmp" />
+    <Image Include="res\145.bmp" />
+    <Image Include="res\146.bmp" />
+    <Image Include="res\147.bmp" />
+    <Image Include="res\148.bmp" />
+    <Image Include="res\149.bmp" />
+    <Image Include="res\15.bmp" />
+    <Image Include="res\150.bmp" />
+    <Image Include="res\151.bmp" />
+    <Image Include="res\152.bmp" />
+    <Image Include="res\153.bmp" />
+    <Image Include="res\154.bmp" />
+    <Image Include="res\155.bmp" />
+    <Image Include="res\156.bmp" />
+    <Image Include="res\157.bmp" />
+    <Image Include="res\158.bmp" />
+    <Image Include="res\159.bmp" />
+    <Image Include="res\16.bmp" />
+    <Image Include="res\160.bmp" />
+    <Image Include="res\161.bmp" />
+    <Image Include="res\162.bmp" />
+    <Image Include="res\163.bmp" />
+    <Image Include="res\164.bmp" />
+    <Image Include="res\165.bmp" />
+    <Image Include="res\166.bmp" />
+    <Image Include="res\167.bmp" />
+    <Image Include="res\168.bmp" />
+    <Image Include="res\169.bmp" />
+    <Image Include="res\17.bmp" />
+    <Image Include="res\170.bmp" />
+    <Image Include="res\171.bmp" />
+    <Image Include="res\172.bmp" />
+    <Image Include="res\173.bmp" />
+    <Image Include="res\174.bmp" />
+    <Image Include="res\175.bmp" />
+    <Image Include="res\176.bmp" />
+    <Image Include="res\177.bmp" />
+    <Image Include="res\178.bmp" />
+    <Image Include="res\179.bmp" />
+    <Image Include="res\18.bmp" />
+    <Image Include="res\180.bmp" />
+    <Image Include="res\181.bmp" />
+    <Image Include="res\182.bmp" />
+    <Image Include="res\183.bmp" />
+    <Image Include="res\184.bmp" />
+    <Image Include="res\185.bmp" />
+    <Image Include="res\186.bmp" />
+    <Image Include="res\187.bmp" />
+    <Image Include="res\188.bmp" />
+    <Image Include="res\189.bmp" />
+    <Image Include="res\19.bmp" />
+    <Image Include="res\190.bmp" />
+    <Image Include="res\191.bmp" />
+    <Image Include="res\192.bmp" />
+    <Image Include="res\193.bmp" />
+    <Image Include="res\194.bmp" />
+    <Image Include="res\195.bmp" />
+    <Image Include="res\196.bmp" />
+    <Image Include="res\197.bmp" />
+    <Image Include="res\198.bmp" />
+    <Image Include="res\199.bmp" />
+    <Image Include="res\2.bmp" />
+    <Image Include="res\20.bmp" />
+    <Image Include="res\200.bmp" />
+    <Image Include="res\201.bmp" />
+    <Image Include="res\202.bmp" />
+    <Image Include="res\203.bmp" />
+    <Image Include="res\204.bmp" />
+    <Image Include="res\205.bmp" />
+    <Image Include="res\206.bmp" />
+    <Image Include="res\207.bmp" />
+    <Image Include="res\208.bmp" />
+    <Image Include="res\209.bmp" />
+    <Image Include="res\21.bmp" />
+    <Image Include="res\210.bmp" />
+    <Image Include="res\211.bmp" />
+    <Image Include="res\212.bmp" />
+    <Image Include="res\213.bmp" />
+    <Image Include="res\214.bmp" />
+    <Image Include="res\22.bmp" />
+    <Image Include="res\23.bmp" />
+    <Image Include="res\24.bmp" />
+    <Image Include="res\25.bmp" />
+    <Image Include="res\26.bmp" />
+    <Image Include="res\27.bmp" />
+    <Image Include="res\28.bmp" />
+    <Image Include="res\29.bmp" />
+    <Image Include="res\3.bmp" />
+    <Image Include="res\30.bmp" />
+    <Image Include="res\31.bmp" />
+    <Image Include="res\32.bmp" />
+    <Image Include="res\33.bmp" />
+    <Image Include="res\34.bmp" />
+    <Image Include="res\35.bmp" />
+    <Image Include="res\36.bmp" />
+    <Image Include="res\37.bmp" />
+    <Image Include="res\38.bmp" />
+    <Image Include="res\39.bmp" />
+    <Image Include="res\4.bmp" />
+    <Image Include="res\40.bmp" />
+    <Image Include="res\41.bmp" />
+    <Image Include="res\42.bmp" />
+    <Image Include="res\43.bmp" />
+    <Image Include="res\44.bmp" />
+    <Image Include="res\45.bmp" />
+    <Image Include="res\46.bmp" />
+    <Image Include="res\47.bmp" />
+    <Image Include="res\48.bmp" />
+    <Image Include="res\49.bmp" />
+    <Image Include="res\5.bmp" />
+    <Image Include="res\50.bmp" />
+    <Image Include="res\51.bmp" />
+    <Image Include="res\52.bmp" />
+    <Image Include="res\53.bmp" />
+    <Image Include="res\54.bmp" />
+    <Image Include="res\55.bmp" />
+    <Image Include="res\56.bmp" />
+    <Image Include="res\57.bmp" />
+    <Image Include="res\58.bmp" />
+    <Image Include="res\59.bmp" />
+    <Image Include="res\6.bmp" />
+    <Image Include="res\60.bmp" />
+    <Image Include="res\61.bmp" />
+    <Image Include="res\62.bmp" />
+    <Image Include="res\63.bmp" />
+    <Image Include="res\64.bmp" />
+    <Image Include="res\65.bmp" />
+    <Image Include="res\66.bmp" />
+    <Image Include="res\67.bmp" />
+    <Image Include="res\68.bmp" />
+    <Image Include="res\69.bmp" />
+    <Image Include="res\7.bmp" />
+    <Image Include="res\70.bmp" />
+    <Image Include="res\71.bmp" />
+    <Image Include="res\72.bmp" />
+    <Image Include="res\73.bmp" />
+    <Image Include="res\74.bmp" />
+    <Image Include="res\75.bmp" />
+    <Image Include="res\76.bmp" />
+    <Image Include="res\77.bmp" />
+    <Image Include="res\78.bmp" />
+    <Image Include="res\79.bmp" />
+    <Image Include="res\8.bmp" />
+    <Image Include="res\80.bmp" />
+    <Image Include="res\81.bmp" />
+    <Image Include="res\82.bmp" />
+    <Image Include="res\83.bmp" />
+    <Image Include="res\84.bmp" />
+    <Image Include="res\85.bmp" />
+    <Image Include="res\86.bmp" />
+    <Image Include="res\87.bmp" />
+    <Image Include="res\88.bmp" />
+    <Image Include="res\89.bmp" />
+    <Image Include="res\9.bmp" />
+    <Image Include="res\90.bmp" />
+    <Image Include="res\91.bmp" />
+    <Image Include="res\92.bmp" />
+    <Image Include="res\93.bmp" />
+    <Image Include="res\94.bmp" />
+    <Image Include="res\95.bmp" />
+    <Image Include="res\96.bmp" />
+    <Image Include="res\97.bmp" />
+    <Image Include="res\98.bmp" />
+    <Image Include="res\99.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
