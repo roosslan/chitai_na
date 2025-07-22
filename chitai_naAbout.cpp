@@ -24,7 +24,7 @@ BOOL CAboutDlg::OnInitDialog()
 void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_EDIT1, licencse_);
+	DDX_Control(pDX, IDC_EDIT, licencse_);
 	DDX_Control(pDX, IDC_STATIC_VERSION, version_);
 }
 
