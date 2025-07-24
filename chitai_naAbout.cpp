@@ -14,18 +14,18 @@ BOOL CAboutDlg::OnInitDialog()
 	CString version;
 	version.Format(L"Version %s\n", _T(FILE_VERSIONSTRING));
 
-	version_.SetWindowText(version);
+	m_staVersion.SetWindowText(version);
 	CString license;
 	license.LoadString(IDS_LICENCSE);
-	licencse_.SetWindowText(license);
+	m_edtLicense.SetWindowText(license);
 	return TRUE;
 }
 
 void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_EDIT, licencse_);
-	DDX_Control(pDX, IDC_STATIC_VERSION, version_);
+	DDX_Control(pDX, IDC_EDIT, m_edtLicense);
+	DDX_Control(pDX, IDC_STATIC_VERSION, m_staVersion);
 }
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
