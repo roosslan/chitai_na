@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resources\Bitmaps">
+      <UniqueIdentifier>{62e16437-4704-44a7-be55-5e88f9b6bdeb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -63,6 +66,9 @@
     <ClInclude Include="resource_lists.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="helper_functions.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="chitai_na.cpp">
@@ -83,6 +89,9 @@
     <ClCompile Include="CResTree.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="helper_functions.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="chitai_na.rc">
@@ -90,1289 +99,1289 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\1.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\2.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\3.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\4.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\5.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\6.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\7.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\8.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\9.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\10.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\11.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\12.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\13.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\14.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\15.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\16.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\17.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\18.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\19.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\20.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\21.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\22.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\23.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\24.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\25.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\26.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\27.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\28.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\29.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\30.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\31.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\32.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\33.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\34.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\35.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\36.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\37.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\38.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\39.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\40.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\41.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\42.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\43.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\44.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\45.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\46.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\47.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\48.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\49.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\50.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\51.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\52.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\53.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\54.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\55.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\56.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\57.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\58.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\59.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\60.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\61.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\62.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\63.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\64.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\65.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\66.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\67.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\68.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\69.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\70.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\71.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\72.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\73.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\74.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\75.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\76.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\77.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\78.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\79.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\80.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\81.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\82.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\83.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\84.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\85.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\86.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\87.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\88.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\89.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\90.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\91.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\92.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\93.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\94.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\95.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\96.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\97.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\98.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\99.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\100.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\101.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\102.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\103.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\104.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\105.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\106.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\107.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\108.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\109.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\110.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\111.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\112.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\113.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\114.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\115.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\116.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\117.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\118.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\119.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\120.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\121.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\122.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\123.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\124.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\125.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\126.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\127.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\128.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\129.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\130.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\131.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\132.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\133.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\134.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\135.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\136.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\137.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\138.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\139.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\140.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\141.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\142.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\143.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\144.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\145.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\146.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\147.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\148.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\149.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\150.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\151.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\152.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\153.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\154.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\155.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\156.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\157.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\158.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\159.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\160.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\161.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\162.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\163.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\164.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\165.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\166.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\167.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\168.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\169.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\170.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\171.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\172.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\173.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\174.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\175.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\176.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\177.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\178.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\179.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\180.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\181.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\182.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\183.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\184.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\185.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\186.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\187.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\188.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\189.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\190.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\191.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\192.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\193.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\194.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\195.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\196.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\197.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\198.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\199.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\200.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\201.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\202.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\203.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\204.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\205.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\206.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\207.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\208.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\209.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\210.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\211.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\212.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\213.bmp">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="res\214.bmp">
-      <Filter>Resources</Filter>
-    </Image>
     <Image Include="bitmaps\1.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\1.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\2.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\2.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\3.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\3.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\4.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\4.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\5.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\5.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\6.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\6.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\7.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\7.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\8.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\8.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\9.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\9.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\10.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\10.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\11.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\11.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\12.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\12.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\13.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\13.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\14.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\14.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\15.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\15.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\16.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\16.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\17.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\17.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\18.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\18.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\19.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\19.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\20.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\20.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\21.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\21.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\22.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\22.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\23.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\23.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\24.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\24.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\25.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\25.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\26.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\26.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\27.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\27.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\28.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\28.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\29.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\29.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\30.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\30.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\31.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\31.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\32.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\32.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\33.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\33.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\34.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\34.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\35.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\35.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\36.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\36.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\37.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\37.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\38.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\38.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\39.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\39.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\40.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\40.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\41.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\41.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\42.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\42.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\43.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\43.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\44.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\44.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\45.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\45.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\46.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\46.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\47.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\47.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\48.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\48.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\49.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\49.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\50.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\50.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\51.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\51.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\52.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\52.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\53.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\53.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\54.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\54.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\55.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\55.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\56.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\56.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\57.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\57.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\58.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\58.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\59.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\59.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\60.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\60.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\61.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\61.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\62.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\62.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\63.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\63.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\64.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\64.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\65.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\65.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\66.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\66.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\67.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\67.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\68.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\68.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\69.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\69.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\70.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\70.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\71.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\71.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\72.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\72.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\73.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\73.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\74.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\74.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\75.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\75.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\76.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\76.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\77.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\77.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\78.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\78.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\79.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\79.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\80.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\80.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\81.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\81.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\82.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\82.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\83.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\83.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\84.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\84.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\85.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\85.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\86.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\86.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\87.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\87.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\88.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\88.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\89.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\89.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\90.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\90.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\91.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\91.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\92.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\92.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\93.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\93.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\94.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\94.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\95.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\95.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\96.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\96.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\97.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\97.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\98.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\98.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\99.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\99.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\100.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\100.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\101.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\101.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\102.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\102.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\103.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\103.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\104.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\104.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\105.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\105.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\106.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\106.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\107.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\107.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\108.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\108.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\109.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\109.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\110.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\110.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\111.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\111.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\112.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\112.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\113.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\113.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\114.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\114.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\115.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\115.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\116.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\116.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\117.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\117.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\118.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\118.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\119.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\119.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\120.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\120.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\121.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\121.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\122.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\122.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\123.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\123.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\124.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\124.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\125.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\125.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\126.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\126.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\127.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\127.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\128.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\128.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\129.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\129.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\130.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\130.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\131.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\131.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\132.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\132.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\133.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\133.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\134.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\134.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\135.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\135.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\136.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\136.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\137.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\137.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\138.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\138.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\139.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\139.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\140.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\140.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\141.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\141.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\142.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\142.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\143.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\143.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\144.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\144.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\145.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\145.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\146.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\146.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\147.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\147.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\148.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\148.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\149.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\149.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\150.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\150.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\151.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\151.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\152.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\152.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\153.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\153.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\154.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\154.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\155.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\155.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\156.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\156.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\157.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\157.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\158.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\158.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\159.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\159.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\160.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\160.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\161.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\161.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\162.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\162.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\163.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\163.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\164.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\164.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\165.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\165.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\166.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\166.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\167.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\167.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\168.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\168.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\169.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\169.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\170.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\170.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\171.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\171.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\172.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\172.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\173.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\173.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\174.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\174.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\175.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\175.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\176.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\176.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\177.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\177.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\178.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\178.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\179.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\179.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\180.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\180.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\181.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\181.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\182.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\182.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\183.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\183.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\184.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\184.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\185.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\185.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\186.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\186.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\187.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\187.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\188.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\188.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\189.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\189.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\190.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\190.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\191.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\191.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\192.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\192.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\193.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\193.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\194.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\194.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\195.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\195.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\196.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\196.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\197.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\197.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\198.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\198.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\199.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\199.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\200.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\200.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\201.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\201.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\202.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\202.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\203.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\203.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\204.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\204.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\205.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\205.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\206.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\206.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\207.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\207.bmp">
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\208.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\208.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\209.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\209.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\210.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\210.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\211.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\211.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\212.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\212.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\213.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\213.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
     <Image Include="bitmaps\214.bmp">
-      <Filter>Resources</Filter>
+      <Filter>Resources\Bitmaps</Filter>
+    </Image>
+    <Image Include="res\214.bmp">
+      <Filter>Resources\Bitmaps</Filter>
     </Image>
   </ItemGroup>
 </Project>
