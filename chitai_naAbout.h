@@ -4,8 +4,8 @@
 
 class CAboutDlg : public CDialogEx
 {
-	CEdit     licencse_;
-	CStatic   version_;
+	CEdit     m_edtLicense;
+	CStatic   m_staVersion;
 
 public:
 	CAboutDlg();
@@ -19,6 +19,5 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV-Unterstützung
 
 														// Implementierung
-protected:
 	DECLARE_MESSAGE_MAP()
 };
