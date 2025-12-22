@@ -1,7 +1,7 @@
 // BitmapPicture.cpp : implementation file
 //
 // Copyright (c) 1997 Chris Maunder (Chris.Maunder@cbr.clw.csiro.au)
-// Written 1 December, 1997
+// Written 1 December 1997
 
 #include "stdafx.h"
 #include "BitmapPicture.h"
@@ -174,7 +174,7 @@ void CBitmapPicture::DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct)
     pDC->SetBkMode(nOldMode);
 }
 
-// Suggested by Pål K. Tønder.
+// Suggested by Pål K.
 void CBitmapPicture::OnSysColorChange() 
 {
     CStatic::OnSysColorChange();

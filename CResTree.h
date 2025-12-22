@@ -1,15 +1,19 @@
+#ifndef RESTREE_HEADER
+#define RESTREE_HEADER
+#pragma once
 #include "chitai_na.h"
 
-#pragma once
+
 class CResTree
 {
 public:
-	CString idwRadical1, idrRadical1, ideRadical1, idruRadical1,
-		idwRadical2, idrRadical2, ideRadical2, idruRadical2,
-		idwRadical3, idrRadical3, ideRadical3, idruRadical3,
-		idwRadical4, idrRadical4, ideRadical4, idruRadical4;
+	CString idw_radical1, idr_radical1, ide_radical1, idru_radical1,
+		idw_radical2, idr_radical2, ide_radical2, idru_radical2,
+		idw_radical3, idr_radical3, ide_radical3, idru_radical3,
+		idw_radical4, idr_radical4, ide_radical4, idru_radical4;
 			
 	CResTree();
 	~CResTree();
 };
 
+#endif

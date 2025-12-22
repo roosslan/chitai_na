@@ -1,11 +1,14 @@
-﻿#pragma once
+﻿#ifndef ABOUT_HEADER
+#define ABOUT_HEADER
+
+#pragma once
 
 // CAboutDlg-Dialogfeld für Anwendungsbefehl "Info"
 
-class CAboutDlg : public CDialogEx
+class CAboutDlg final : public CDialogEx
 {
-	CEdit     m_edtLicense;
-	CStatic   m_staVersion;
+	CEdit     m_edt_license_;
+	CStatic   m_sta_version_;
 
 public:
 	CAboutDlg();
@@ -21,3 +24,4 @@ protected:
 														// Implementierung
 	DECLARE_MESSAGE_MAP()
 };
+#endif

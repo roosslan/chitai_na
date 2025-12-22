@@ -1,4 +1,4 @@
-
+#pragma once
 #define RESOURCE_LIST_WRITTEN \
 	X(IDW_RADICAL1) \
 	X(IDW_RADICAL2) \

@@ -10,22 +10,22 @@ CAboutDlg::CAboutDlg() : CDialogEx(CAboutDlg::IDD)
 
 BOOL CAboutDlg::OnInitDialog()
 {
-	CDialog::OnInitDialog();
+//	CDialog::OnInitDialog();
 	CString version;
 	version.Format(L"Version %s\n", _T(FILE_VERSIONSTRING));
 
-	m_staVersion.SetWindowText(version);
+	m_sta_version_.SetWindowText(version);
 	CString license;
 	license.LoadString(IDS_LICENCSE);
-	m_edtLicense.SetWindowText(license);
+	m_edt_license_.SetWindowText(license);
 	return TRUE;
 }
 
 void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_EDIT, m_edtLicense);
-	DDX_Control(pDX, IDC_STATIC_VERSION, m_staVersion);
+	DDX_Control(pDX, IDC_EDIT, m_edt_license_);
+	DDX_Control(pDX, IDC_STATIC_VERSION, m_sta_version_);
 }
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
