@@ -1,7 +1,7 @@
 ﻿#ifndef PLAYER_HEADER
 #define PLAYER_HEADER
 
-#import "C:\\Windows\\System32\\wmp.dll" no_namespace
+// #import "C:\\Windows\\System32\\wmp.dll" no_namespace
 //#import "wmp.dll" no_namespace
 
 
@@ -14,7 +14,7 @@ public:
 //	CWMPPlayer4(const CWMPPlayer4& dispatchSrc) : COleDispatchDriver(dispatchSrc) {}
 
 	// Attribute
-	uint8_t playedSymbol;
+	uint8_t playedSymbol = 0;
 	void close()
 	{
 		InvokeHelper(0x3, DISPATCH_METHOD, VT_EMPTY, NULL, NULL);

@@ -43,12 +43,12 @@
 #include <atlconv.h>
 #include <vector>
 #include <random>
+#include <algorithm>
 #include <filesystem>
 
 #include <boost/log/core.hpp>
 #include <boost/log/expressions.hpp>
 #include <boost/log/utility/setup/file.hpp>
-#include <boost/log/utility/setup/console.hpp>
 #include <boost/log/utility/setup/common_attributes.hpp>
 #include <boost/current_function.hpp>
 #include <boost/log/trivial.hpp>

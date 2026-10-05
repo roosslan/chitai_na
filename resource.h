@@ -1516,7 +1516,7 @@
 #define IDC_STATIC_VERSION              31019
 #define IDD_CHITAINA_DIALOG             31021
 #define IDC_TEXTSTATIC                  31022
-#define IDS_LICENCSE                    31024
+#define IDS_LICENSE                     31024
 #define IDS_ABOUTBOX                    31025
 #define IDR_TRAYICON                    31026
 #define IDR_CONTEXTMENU                 31027

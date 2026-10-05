@@ -31,7 +31,6 @@ void CChitai_na_dlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_PICTURE2, m_picture2_);
 	DDX_Control(pDX, IDC_PICTURE3, m_picture3_);
 	DDX_Control(pDX, IDC_PICTURE4, m_picture4_);
-	DDX_Control(pDX, IDC_PICTURE4, m_picture4_);
 	DDX_Control(pDX, IDC_TEXTSTATIC, m_question_);
 	DDX_Control(pDX, IDC_EDIT_DESCRIPTION, m_edt_description_);
 }
@@ -66,11 +65,15 @@ BOOL CChitai_na_dlg::OnInitDialog()
 	SetIcon(m_hicon_, TRUE);			// Großes Symbol verwenden
 	SetIcon(m_hicon_, FALSE);			// Kleines Symbol verwenden
 
-	/* Move our window to the right bottom corner */
-	CRect window_rect, desktopRect;
+	/* Перемещение окна в правый нижний угол рабочей области (без панели задач) */
+	CRect window_rect, work_area;
 	GetWindowRect(&window_rect);
-	uint16_t x = GetSystemMetrics(SM_CXSCREEN) - window_rect.Width();
-	uint16_t y = GetSystemMetrics(SM_CYSCREEN) - window_rect.Height();
+	if (!SystemParametersInfo(SPI_GETWORKAREA, 0, &work_area, 0))
+	{
+		work_area.SetRect(0, 0, GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN));
+	}
+	const int x = work_area.right - window_rect.Width();
+	const int y = work_area.bottom - window_rect.Height();
 	MoveWindow(x, y, window_rect.Width(), window_rect.Height(), TRUE);
 
 	m_edt_font_.CreateFont(30, 0, 0, 0, 0, false, false,
@@ -89,10 +92,18 @@ BOOL CChitai_na_dlg::OnInitDialog()
 
 void CChitai_na_dlg::on_stn_dblclick_textstatic()
 {
+	/* Страховка от зависания: верный ответ дан, но плеер уже не играет
+	   (ошибка открытия файла, остановка и т. п.) — событие MediaEnded не придёт */
+	if (!allow_picture_change_ && answered_player_ >= 0 && !is_player_busy(answered_player_))
+	{
+		LOG_SAVE << "player " << answered_player_ << " is idle, state " << mp4_[answered_player_]->get_playState();
+		finish_answer();
+	}
+
 	if (allow_picture_change_)
 	{
 		load_resources();
-		PlaceElementsOnShow();
+		place_elements_on_show();
 
 		HideVideoPlayers();
 		Invalidate();
@@ -150,12 +161,54 @@ HCURSOR CChitai_na_dlg::OnQueryDragIcon()
 
 void CChitai_na_dlg::play_state_change_ocx(long new_state)
 {
-	if (8 == new_state) // OnPlayFinished
+	if (8 == new_state) // wmppsMediaEnded
 	{
-		HideVideoPlayers();
-		Invalidate();
-		allow_picture_change_ = TRUE;
+		finish_answer();
 	}
+}
+
+/* Завершение показа видео верного ответа: разрешение перехода к следующему вопросу */
+void CChitai_na_dlg::finish_answer()
+{
+	HideVideoPlayers();
+	Invalidate();
+	answered_player_ = -1;
+	allow_picture_change_ = TRUE;
+}
+
+/* Плеер занят, пока видео открывается, буферизуется или проигрывается */
+bool CChitai_na_dlg::is_player_busy(int player)
+{
+	switch (mp4_[player]->get_playState())
+	{
+	case 3:		// wmppsPlaying
+	case 6:		// wmppsBuffering
+	case 7:		// wmppsWaiting
+	case 9:		// wmppsTransitioning
+		return true;
+	default:
+		return false;
+	}
+}
+
+CString CChitai_na_dlg::get_mp4_path() const
+{
+	return get_exe_dir() + L"\\mp4\\" + m_str_guess_symbol_ + L".mp4";
+}
+
+/* Реакция на неверный ответ: звук и подсказка, какой ключ был выбран */
+void CChitai_na_dlg::show_wrong_answer(uint8_t clicked_symbol)
+{
+	CString num;
+	num.Format(_T("%d"), clicked_symbol);
+
+	CString written, read, russian;
+	written.LoadString(StrToUID(IDW, L"IDW_RADICAL" + num));
+	read.LoadString(StrToUID(IDR, L"IDR_RADICAL" + num));
+	russian.LoadString(StrToUID(IDRU, L"IDRU_RADICAL" + num));
+
+	MessageBeep(MB_ICONEXCLAMATION);
+	m_edt_description_.SetWindowText(L"Неверно: это ключ N" + num + L" " + written + L" " + read + L" (" + russian + L").\r\n\r\n" + m_idrex_guess_radical_);
 }
 
 
@@ -257,7 +310,7 @@ void CChitai_na_dlg::load_resources()
 }
 
 /* SetWindowPos on start	*/
-void CChitai_na_dlg::PlaceElementsOnShow()
+void CChitai_na_dlg::place_elements_on_show()
 {	
 	m_question_.SetWindowText(m_question_text_);
 
@@ -319,34 +372,47 @@ uint16_t CChitai_na_dlg::StrToUID(uint8_t IDtype, const CString& resourceName)
 
 void CChitai_na_dlg::on_picture_click()
 {
-	CString curDir;
-	uint8_t clickedPict = 0;
+	/* Пока проигрывается видео верного ответа, клики игнорируются */
+	if (answered_player_ >= 0 || allow_picture_change_)
+		return;
 
-	/* Getting the clicked picture number	*/
+	/* Определение номера картинки: lParam содержит HWND статического элемента, приславшего STN_CLICKED */
 	const MSG* message = GetCurrentMessage();
-	for (int i = 0; i<4; i++)
-	{	/* The lParam has the HWND of the static control that is sending the message */
-		if ((int)(HWND)message->lParam == (int)m_pic[i]->GetSafeHwnd())
+	const HWND sender = reinterpret_cast<HWND>(message->lParam);
+
+	int clicked_pict = -1;
+	for (int i = 0; i < 4; i++)
+	{
+		if (sender == m_pic[i]->GetSafeHwnd())
 		{
-			clickedPict = i;
+			clicked_pict = i;
+			break;
 		}
 	}
+	if (clicked_pict < 0)
+		return;
 
-	GetCurrentDirectory(MAX_PATH, curDir.GetBufferSetLength(MAX_PATH));
-	curDir.ReleaseBuffer();
-	CString currentDir = curDir + L"\\mp4";
-
-	// CString Path = _T(currentDir);
-	CString Path = currentDir + "\\" + m_str_guess_symbol_ + L".mp4";
-
-	if (mp4_[clickedPict]->playedSymbol == m_guess_symbol_)
+	if (mp4_[clicked_pict]->playedSymbol != m_guess_symbol_)
 	{
-		RestoreVideoPlayer(clickedPict);
-		allow_picture_change_ = FALSE;
-		mp4_[clickedPict]->put_URL(Path);
-		m_setting_ = mp4_[clickedPict]->get_settings();
-		m_media_ = mp4_[clickedPict]->newMedia(Path);
+		show_wrong_answer(mp4_[clicked_pict]->playedSymbol);
+		return;
 	}
+
+	m_edt_description_.SetWindowText(m_idrex_guess_radical_);
+
+	const CString path = get_mp4_path();
+	if (GetFileAttributes(path) == INVALID_FILE_ATTRIBUTES)
+	{
+		/* Видео нет — ответ засчитывается без него, чтобы не блокировать переход дальше */
+		LOG_SAVE << "video not found: " << CW2A(path, CP_UTF8).m_psz;
+		m_edt_description_.SetWindowText(L"Верно! (видео не найдено: " + path + L")\r\n\r\n" + m_idrex_guess_radical_);
+		allow_picture_change_ = TRUE;
+		return;
+	}
+
+	answered_player_ = clicked_pict;
+	RestoreVideoPlayer(clicked_pict);
+	mp4_[clicked_pict]->put_URL(path);
 }
 
 BOOL CChitai_na_dlg::TrayMessage(DWORD dwMessage)
@@ -387,11 +453,15 @@ int CChitai_na_dlg::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 void CChitai_na_dlg::OnClose()
 {
-	//Remove the Icon from the Systray
-	TrayMessage(NIM_DELETE);
+	/* Штатное завершение модального диалога вместо PostQuitMessage */
+	EndDialog(IDCANCEL);
+}
 
-	//CDialogEx::OnClose();
-	PostQuitMessage(0);
+void CChitai_na_dlg::OnDestroy()
+{
+	/* Иконка удаляется из трея при любом способе закрытия окна */
+	TrayMessage(NIM_DELETE);
+	CDialogEx::OnDestroy();
 }
 
 LRESULT CChitai_na_dlg::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
@@ -488,9 +558,7 @@ void CChitai_na_dlg::ShowContextMenu(HWND hwnd, POINT pt)
 				dlgAbout.DoModal();
 			}
 			if (ID_CLOSE_WIN == menuItemId) {
-				// Remove the Icon from the Systray
-				TrayMessage(NIM_DELETE);
-				PostQuitMessage(0);
+				EndDialog(IDCANCEL);
 			}
 		}
 		DestroyMenu(hMenu);
@@ -516,6 +584,7 @@ BEGIN_MESSAGE_MAP(CChitai_na_dlg, CDialogEx)
 	ON_STN_CLICKED(IDC_PICTURE4, &CChitai_na_dlg::on_picture_click)
 	ON_WM_CREATE()
 	ON_WM_CLOSE()
+	ON_WM_DESTROY()
 	//	ON_COMMAND(ID_CLOSE_WIN, &CChitai_naDlg::OnBnClickedCancel)
 	ON_WM_SIZE()
 	ON_WM_CONTEXTMENU()

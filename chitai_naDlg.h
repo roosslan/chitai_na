@@ -40,6 +40,13 @@ class CChitai_na_dlg final : public CDialogEx
 	CBitmapPicture* m_pic[4] = { &m_picture1_, &m_picture2_, &m_picture3_, &m_picture4_ };
 
 	bool allow_picture_change_ = TRUE;
+	/* Номер плеера, в котором проигрывается видео верного ответа; -1 — ответа ещё не было */
+	int answered_player_ = -1;
+
+	void finish_answer();
+	void show_wrong_answer(uint8_t clicked_symbol);
+	bool is_player_busy(int player);
+	CString get_mp4_path() const;
 
 	void load_resources();
 
@@ -52,7 +59,7 @@ class CChitai_na_dlg final : public CDialogEx
 	
 
 	// setWindowPos on start
-	void PlaceElementsOnShow();
+	void place_elements_on_show();
 	void HideVideoPlayers();
 	void RestoreVideoPlayer(uint8_t wmPlayer);
 	BOOL TrayMessage(DWORD dwMessage);
@@ -77,6 +84,7 @@ class CChitai_na_dlg final : public CDialogEx
 	//	void OnButtonDynamic(UINT nID);
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 	afx_msg void OnClose();
+	afx_msg void OnDestroy();
 	afx_msg void OnSize(UINT nType, int cx, int cy);
 
 protected:

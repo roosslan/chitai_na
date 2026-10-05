@@ -1,7 +1,7 @@
 ﻿#ifndef SETT_HEADER
 #define SETT_HEADER
 
-#import "C:\\Windows\\System32\\wmp.dll" no_namespace
+// #import "C:\\Windows\\System32\\wmp.dll" no_namespace
 /* #import "wmp.dll" no_namespace */
 
 class CWMPSettings : public COleDispatchDriver

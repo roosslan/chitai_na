@@ -1,7 +1,7 @@
 ﻿#ifndef MEDIA_HEADER
 #define MEDIA_HEADER
 
-#import "C:\\Windows\\System32\\wmp.dll" no_namespace
+// #import "C:\\Windows\\System32\\wmp.dll" no_namespace
 //#import "wmp.dll" no_namespace
 
 class CWMPMedia : public COleDispatchDriver

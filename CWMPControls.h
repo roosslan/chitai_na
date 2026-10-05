@@ -1,7 +1,7 @@
 ﻿#ifndef CTRL_HEADER
 #define CTRL_HEADER
 
-#import "C:\\Windows\\System32\\wmp.dll" no_namespace
+// #import "C:\\Windows\\System32\\wmp.dll" no_namespace
 // import "wmp.dll" no_namespace
 
 class CWMPControls : public COleDispatchDriver
