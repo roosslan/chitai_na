@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "afxdialogex.h"
 #include "chitai_na.h"
 #include "chitai_naAbout.h"

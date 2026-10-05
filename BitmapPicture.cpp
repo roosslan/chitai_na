@@ -1,4 +1,4 @@
-// BitmapPicture.cpp : implementation file
+ï»¿// BitmapPicture.cpp : implementation file
 //
 // Copyright (c) 1997 Chris Maunder (Chris.Maunder@cbr.clw.csiro.au)
 // Written 1 December 1997
@@ -81,7 +81,7 @@ BOOL CBitmapPicture::SetBitmap(LPCTSTR lpszResourceName)
     return CBitmapPicture::SetBitmap(hBmp);
 }
 
-// Suggested by Pål K. Used to reload the bitmap on system colour changes.
+// Suggested by PÃ¥l K. Used to reload the bitmap on system colour changes.
 BOOL CBitmapPicture::ReloadBitmap()
 {
     if (m_nResourceID > 0) 
@@ -174,7 +174,7 @@ void CBitmapPicture::DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct)
     pDC->SetBkMode(nOldMode);
 }
 
-// Suggested by Pål K.
+// Suggested by PÃ¥l K.
 void CBitmapPicture::OnSysColorChange() 
 {
     CStatic::OnSysColorChange();

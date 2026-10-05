@@ -1,4 +1,4 @@
-#define FILE_VERSIONSTRING     "1.2.5.0\0"
+﻿#define FILE_VERSIONSTRING     "1.2.5.0\0"
 #define FILE_MAJOR             1
 #define FILE_MINOR             1
 #define FILE_BUILD             0
