@@ -1,5 +1,5 @@
 # Сборка, тесты и релизы chitai_na.
-# push/PR: сборка Release x64, тесты, zip-пакет в артефактах.
+# push/PR: сборка Release x64, тесты, cab-пакет в артефактах.
 # Тег v* (например, v2.1): то же самое + проверка версии и релиз на GitHub.
 
 name: CI
@@ -7,7 +7,7 @@ name: CI
 on:
   push:
     branches: [trunk]
-    tags: ['v*']
+    tags: ['v2.1']
   pull_request:
   workflow_dispatch:
 
@@ -20,6 +20,7 @@ env:
 jobs:
   build:
     runs-on: windows-2022
+
     steps:
       - uses: actions/checkout@v4
 
@@ -36,19 +37,40 @@ jobs:
         run: |
           $ver = $env:BOOST_VERSION
           $dir = 'boost_' + ($ver -replace '\.', '_')
+
           curl.exe -sSfL -o "$env:RUNNER_TEMP\boost.7z" "https://archives.boost.io/release/$ver/source/$dir.7z"
+
           7z x "$env:RUNNER_TEMP\boost.7z" -o"$env:RUNNER_TEMP" -y | Out-Null
+
           Set-Location "$env:RUNNER_TEMP\$dir"
+
           .\bootstrap.bat
-          if ($LASTEXITCODE -ne 0) { exit 1 }
-          .\b2 install --prefix="$env:RUNNER_TEMP\boost" --with-log toolset=msvc-14.3 address-model=64 `
-            link=static runtime-link=static variant=release threading=multi -j4 -d0
-          if ($LASTEXITCODE -ne 0) { exit 1 }
+
+          if ($LASTEXITCODE -ne 0) {
+            exit 1
+          }
+
+          .\b2 install `
+            --prefix="$env:RUNNER_TEMP\boost" `
+            --with-log `
+            toolset=msvc-14.3 `
+            address-model=64 `
+            link=static `
+            runtime-link=static `
+            variant=release `
+            threading=multi `
+            -j4 `
+            -d0
+
+          if ($LASTEXITCODE -ne 0) {
+            exit 1
+          }
 
       - name: Пути к Boost
         shell: pwsh
         run: |
           $inc = Get-ChildItem "$env:RUNNER_TEMP\boost\include" -Directory | Select-Object -First 1
+
           "BOOST_ROOT=$($inc.FullName)" >> $env:GITHUB_ENV
           "BoostLibDir=$env:RUNNER_TEMP\boost\lib" >> $env:GITHUB_ENV
 
@@ -65,46 +87,139 @@ jobs:
         shell: pwsh
         run: |
           $tag = '${{ github.ref_name }}'.TrimStart('v')
+
           $parts = [System.Collections.Generic.List[string]]$tag.Split('.')
-          while ($parts.Count -lt 4) { $parts.Add('0') }
+
+          while ($parts.Count -lt 4) {
+            $parts.Add('0')
+          }
+
           $expected = $parts -join '.'
-          $actual = (Select-String -Path Version.h -Pattern 'FILE_VERSIONSTRING\s+"([0-9.]+)').Matches[0].Groups[1].Value
+
+          $actual = (
+            Select-String `
+              -Path Version.h `
+              -Pattern 'FILE_VERSIONSTRING\s+"([0-9.]+)'
+          ).Matches[0].Groups[1].Value
+
           if ($actual -ne $expected) {
             Write-Error "Тег ${{ github.ref_name }} не совпадает с версией $actual в Version.h"
             exit 1
           }
 
-      - name: Пакет
+      # ------------------------------------------------------------------
+      # Создание CAB
+      # ------------------------------------------------------------------
+      - name: Пакет CAB
         shell: pwsh
         run: |
-          $suffix = if ('${{ github.ref_type }}' -eq 'tag') { '${{ github.ref_name }}' } else { '${{ github.sha }}'.Substring(0, 7) }
+          $suffix = if ('${{ github.ref_type }}' -eq 'tag') {
+            '${{ github.ref_name }}'
+          } else {
+            '${{ github.sha }}'.Substring(0, 7)
+          }
+
           $name = "chitai_na-$suffix-x64"
-          New-Item -ItemType Directory "dist\$name" | Out-Null
-          Copy-Item x64\Release\chitai_na.exe, LICENSE, readme.md "dist\$name"
-          Copy-Item mp4 "dist\$name" -Recurse
-          Compress-Archive -Path "dist\$name" -DestinationPath "dist\$name.zip"
+          $packageDir = (New-Item -ItemType Directory -Force "dist\$name").FullName
+          $cabDir = (New-Item -ItemType Directory -Force "dist\cab").FullName
+
+          # Копируем файлы программы
+          Copy-Item `
+            x64\Release\chitai_na.exe, `
+            LICENSE, `
+            readme.md `
+            $packageDir
+
+          # Копируем каталог mp4
+          Copy-Item mp4 $packageDir -Recurse
+
+          # Получаем список всех файлов
+          $files = Get-ChildItem $packageDir -Recurse -File
+
+          # DDF-файл для makecab
+          $ddf = Join-Path $env:RUNNER_TEMP "chitai_na.ddf"
+
+          @"
+          .OPTION EXPLICIT
+          .Set CabinetNameTemplate=$name.cab
+          .Set DiskDirectoryTemplate=$cabDir
+          .Set MaxDiskSize=0
+          .Set CompressionType=LZX
+          .Set CompressionMemory=21
+          .Set Cabinet=on
+          .Set Compress=on
+          .Set InfFileName=NUL
+
+          "@ | Set-Content -Path $ddf -Encoding ASCII
+
+          foreach ($file in $files) {
+            $relative = $file.FullName.Substring($packageDir.Length + 1)
+
+            # В DDF нужен путь к исходному файлу и имя внутри CAB
+            Add-Content `
+              -Path $ddf `
+              -Value "`"$($file.FullName)`" `"$relative`""
+          }
+
+          Write-Host "Создание CAB..."
+          Write-Host "DDF: $ddf"
+
+          makecab.exe /F "$ddf"
+
+          if ($LASTEXITCODE -ne 0) {
+            Write-Error "makecab завершился с ошибкой: $LASTEXITCODE"
+            exit 1
+          }
+
+          $cab = Join-Path $cabDir "$name.cab"
+
+          if (-not (Test-Path $cab)) {
+            Write-Error "CAB-файл не создан: $cab"
+            exit 1
+          }
+
+          Write-Host ""
+          Write-Host "Создан пакет:"
+          Get-Item $cab | Format-List FullName, Length
+
+      # Проверяем, что CAB действительно существует
+      - name: Проверка CAB
+        shell: pwsh
+        run: |
+          Get-ChildItem dist\cab -Filter *.cab
 
       - uses: actions/upload-artifact@v4
         with:
           name: chitai_na-x64
-          path: dist/*.zip
+          path: dist/cab/*.cab
 
+  # --------------------------------------------------------------------
+  # GitHub Release
+  # --------------------------------------------------------------------
   release:
     needs: build
     if: github.ref_type == 'tag'
+
     runs-on: ubuntu-latest
+
     permissions:
       contents: write
+
     steps:
       - uses: actions/download-artifact@v4
         with:
           name: chitai_na-x64
 
+      - name: Проверка артефакта
+        run: |
+          ls -lah
+          find . -type f -name '*.cab' -print
+
       - name: Релиз на GitHub
         env:
           GH_TOKEN: ${{ github.token }}
-        run: >
-          gh release create "${{ github.ref_name }}" chitai_na-*.zip
-          --repo "${{ github.repository }}"
-          --title "chitai na ${{ github.ref_name }}"
-          --generate-notes
+        run: |
+          gh release create "${{ github.ref_name }}" *.cab \
+            --repo "${{ github.repository }}" \
+            --title "chitai na ${{ github.ref_name }}" \
+            --generate-notes
