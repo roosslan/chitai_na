@@ -1,8 +1,8 @@
-﻿#define FILE_VERSIONSTRING     "2.0.2.6\0"
+﻿#define FILE_VERSIONSTRING     "2.1.0.0\0"
 #define FILE_MAJOR             2
-#define FILE_MINOR             0
-#define FILE_BUILD             2
-#define FILE_REVISION          6
+#define FILE_MINOR             1
+#define FILE_BUILD             0
+#define FILE_REVISION          0
 
 #define COMPANY_NAME      "a_g0@mail.ru\0"
 #define LEGAL_COPYRIGHT   "Copyright (C) 2019-2026 a_g0@mail.ru\0"

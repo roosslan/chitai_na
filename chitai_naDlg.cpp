@@ -1,6 +1,5 @@
 ﻿// chitai_naDlg.cpp: Implementierungsdatei
 #include "stdafx.h"
-#include "resource_lists.h"
 #include "chitai_na.h"
 #include "chitai_naDlg.h"
 
@@ -212,40 +211,22 @@ void CChitai_na_dlg::show_wrong_answer(uint8_t clicked_symbol)
 }
 
 
-/* Generating four unique random numbers in range 1..214 */
-std::vector<uint8_t> CChitai_na_dlg::GetUniq4numbers()
+/* Общий генератор случайных чисел для выбора вопросов */
+static std::mt19937& quiz_generator()
 {
-	/* Create random device and generator */
-	std::random_device rd;
-	std::mt19937 gen(rd());
-	std::uniform_int_distribution<> dist(1, 214);
-
-	/* Vector to store results */
-	std::vector<uint8_t> numbers;
-	numbers.reserve(4); // Reserve space for 4 numbers
-
-	/* Generate until we have 4 unique numbers */
-	while (numbers.size() < 4) {
-		uint8_t num = dist(gen);
-		/* Only add if not already present */
-		if (std::ranges::find(numbers, num) == numbers.end()) {
-			numbers.push_back(num);
-		}
-	}
-
-	return numbers;
+	static std::mt19937 gen(std::random_device{}());
+	return gen;
 }
 
-uint8_t CChitai_na_dlg::GetGuessSymbol(const std::vector<uint8_t>& vSymbols) {
+/* Четыре уникальных случайных номера ключей в диапазоне 1..214 */
+std::vector<uint8_t> CChitai_na_dlg::GetUniq4numbers()
+{
+	return get_unique_numbers(quiz_generator());
+}
 
-	// Initialize random number generator
-	static std::mt19937 gen(static_cast<unsigned>(std::time(nullptr)));
-
-	// Create uniform distribution
-	std::uniform_int_distribution<size_t> dist(0, vSymbols.size() - 1);
-
-	// Generate random index and return corresponding element
-	return vSymbols[dist(gen)];
+uint8_t CChitai_na_dlg::GetGuessSymbol(const std::vector<uint8_t>& vSymbols)
+{
+	return pick_guess_symbol(quiz_generator(), vSymbols);
 }
 
 void CChitai_na_dlg::load_resources()
@@ -347,27 +328,7 @@ void CChitai_na_dlg::HideVideoPlayers()
 
 uint16_t CChitai_na_dlg::StrToUID(uint8_t IDtype, const CString& resourceName)
 {
-	#define X(id) if (resourceName.CompareNoCase(_T(#id)) == 0) return id;
-		switch (IDtype)
-		{
-		case IDB: RESOURCE_LIST_BITMAP;
-			break;
-		case IDW: RESOURCE_LIST_WRITTEN;
-			break;
-		case IDR: RESOURCE_LIST_READ;
-			break;
-		case IDE: RESOURCE_LIST_ENGLISH;
-			break;
-		case IDRU: RESOURCE_LIST_RUSSIAN;
-			break;
-		case IDP: RESOURCE_LIST_PRONOUN;
-			break;
-		case IDREX: RESOURCE_LIST_DESCRIPTION;
-			break;
-		}
-	#undef X
-
-	return 0; // Not found
+	return str_to_uid(IDtype, resourceName);
 }
 
 void CChitai_na_dlg::on_picture_click()

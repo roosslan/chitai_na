@@ -1,0 +1,110 @@
+# Сборка, тесты и релизы chitai_na.
+# push/PR: сборка Release x64, тесты, zip-пакет в артефактах.
+# Тег v* (например, v2.1): то же самое + проверка версии и релиз на GitHub.
+
+name: CI
+
+on:
+  push:
+    branches: [trunk]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  BOOST_VERSION: 1.92.0
+
+jobs:
+  build:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Кеш Boost
+        id: boost-cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}\boost
+          key: boost-${{ env.BOOST_VERSION }}-log-msvc143-x64-static
+
+      - name: Сборка Boost.Log
+        if: steps.boost-cache.outputs.cache-hit != 'true'
+        shell: pwsh
+        run: |
+          $ver = $env:BOOST_VERSION
+          $dir = 'boost_' + ($ver -replace '\.', '_')
+          curl.exe -sSfL -o "$env:RUNNER_TEMP\boost.7z" "https://archives.boost.io/release/$ver/source/$dir.7z"
+          7z x "$env:RUNNER_TEMP\boost.7z" -o"$env:RUNNER_TEMP" -y | Out-Null
+          Set-Location "$env:RUNNER_TEMP\$dir"
+          .\bootstrap.bat
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+          .\b2 install --prefix="$env:RUNNER_TEMP\boost" --with-log toolset=msvc-14.3 address-model=64 `
+            link=static runtime-link=static variant=release threading=multi -j4 -d0
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+
+      - name: Пути к Boost
+        shell: pwsh
+        run: |
+          $inc = Get-ChildItem "$env:RUNNER_TEMP\boost\include" -Directory | Select-Object -First 1
+          "BOOST_ROOT=$($inc.FullName)" >> $env:GITHUB_ENV
+          "BoostLibDir=$env:RUNNER_TEMP\boost\lib" >> $env:GITHUB_ENV
+
+      - uses: microsoft/setup-msbuild@v2
+
+      - name: Сборка
+        run: msbuild chitai_na.sln /m /nologo /p:Configuration=Release /p:Platform=x64
+
+      - name: Тесты
+        run: x64\Release\chitai_na_tests.exe --exe x64\Release\chitai_na.exe --mp4 mp4
+
+      - name: Проверка версии тега
+        if: github.ref_type == 'tag'
+        shell: pwsh
+        run: |
+          $tag = '${{ github.ref_name }}'.TrimStart('v')
+          $parts = [System.Collections.Generic.List[string]]$tag.Split('.')
+          while ($parts.Count -lt 4) { $parts.Add('0') }
+          $expected = $parts -join '.'
+          $actual = (Select-String -Path Version.h -Pattern 'FILE_VERSIONSTRING\s+"([0-9.]+)').Matches[0].Groups[1].Value
+          if ($actual -ne $expected) {
+            Write-Error "Тег ${{ github.ref_name }} не совпадает с версией $actual в Version.h"
+            exit 1
+          }
+
+      - name: Пакет
+        shell: pwsh
+        run: |
+          $suffix = if ('${{ github.ref_type }}' -eq 'tag') { '${{ github.ref_name }}' } else { '${{ github.sha }}'.Substring(0, 7) }
+          $name = "chitai_na-$suffix-x64"
+          New-Item -ItemType Directory "dist\$name" | Out-Null
+          Copy-Item x64\Release\chitai_na.exe, LICENSE, readme.md "dist\$name"
+          Copy-Item mp4 "dist\$name" -Recurse
+          Compress-Archive -Path "dist\$name" -DestinationPath "dist\$name.zip"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chitai_na-x64
+          path: dist/*.zip
+
+  release:
+    needs: build
+    if: github.ref_type == 'tag'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: chitai_na-x64
+
+      - name: Релиз на GitHub
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >
+          gh release create "${{ github.ref_name }}" chitai_na-*.zip
+          --repo "${{ github.repository }}"
+          --title "chitai na ${{ github.ref_name }}"
+          --generate-notes

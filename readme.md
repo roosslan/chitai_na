@@ -32,6 +32,29 @@ msbuild chitai_na.sln /p:Configuration=Release /p:Platform=x64
 
 Изображения ключей встраиваются в exe. Видео (`mp4\`) должны лежать рядом с `chitai_na.exe`; логи пишутся в `logs\` там же.
 
+## Тесты
+
+Проект `tests\chitai_na_tests` собирается вместе с решением. Тесты проверяют выбор вопросов, поиск ресурсов по имени, наличие строк и картинок всех 214 ключей в собранном exe, версию exe и наличие видео:
+
+```
+x64\Release\chitai_na_tests.exe --exe x64\Release\chitai_na.exe --mp4 mp4
+```
+
+Без `--exe` и `--mp4` проверки exe и видео пропускаются.
+
+## CI и релизы
+
+GitHub Actions (`.github/workflows/ci.yml`) при каждом push в `trunk` и в pull request собирает Release x64, запускает тесты и сохраняет zip-пакет (exe, `mp4\`, LICENSE, README) в артефактах сборки.
+
+Для выпуска релиза необходимо поднять версию в `Version.h`, влить изменения в `trunk` и отправить тег вида `v2.1`:
+
+```
+git tag v2.1
+git push origin v2.1
+```
+
+CI проверит, что тег совпадает с версией в `Version.h`, и опубликует релиз с zip-пакетом на странице Releases.
+
 ## Лицензия
 
 GNU GPL v3, полный текст — в файле [LICENSE](LICENSE).

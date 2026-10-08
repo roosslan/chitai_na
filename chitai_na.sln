@@ -5,6 +5,8 @@ VisualStudioVersion = 17.12.35707.178 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chitai_na", "chitai_na.vcxproj", "{5A6ECCD5-801B-484B-ABA8-544744C9E29F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chitai_na_tests", "tests\chitai_na_tests.vcxproj", "{421A1F47-D6D9-4205-95DD-94D4D0094B43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -21,6 +23,14 @@ Global
 		{5A6ECCD5-801B-484B-ABA8-544744C9E29F}.Release|Win32.Build.0 = Release|Win32
 		{5A6ECCD5-801B-484B-ABA8-544744C9E29F}.Release|x64.ActiveCfg = Release|x64
 		{5A6ECCD5-801B-484B-ABA8-544744C9E29F}.Release|x64.Build.0 = Release|x64
+		{421A1F47-D6D9-4205-95DD-94D4D0094B43}.Debug|Win32.ActiveCfg = Debug|Win32
+		{421A1F47-D6D9-4205-95DD-94D4D0094B43}.Debug|Win32.Build.0 = Debug|Win32
+		{421A1F47-D6D9-4205-95DD-94D4D0094B43}.Debug|x64.ActiveCfg = Debug|x64
+		{421A1F47-D6D9-4205-95DD-94D4D0094B43}.Debug|x64.Build.0 = Debug|x64
+		{421A1F47-D6D9-4205-95DD-94D4D0094B43}.Release|Win32.ActiveCfg = Release|Win32
+		{421A1F47-D6D9-4205-95DD-94D4D0094B43}.Release|Win32.Build.0 = Release|Win32
+		{421A1F47-D6D9-4205-95DD-94D4D0094B43}.Release|x64.ActiveCfg = Release|x64
+		{421A1F47-D6D9-4205-95DD-94D4D0094B43}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -69,6 +69,9 @@
     <ClInclude Include="helper_functions.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="quiz_logic.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="chitai_na.cpp">
@@ -90,6 +93,9 @@
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="helper_functions.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="quiz_logic.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>
