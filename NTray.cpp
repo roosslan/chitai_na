@@ -1,4 +1,4 @@
-/*
+﻿/*
 Module : NTray.cpp
 Purpose: implementation for a C++ class to encapsulate the Shell_NotifyIcon API.
 Created: PJN / 14-05-1997
