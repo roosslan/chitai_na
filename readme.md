@@ -1,3 +1,37 @@
-Please make sure the option "Media features" is enabled (using classic "Programs and Features" control panel), especially "Windows Media Player" option, as chitai_na looking for C:\Windows\System32\wmp.dll
- \
+# chitai na
+
+Тренажёр для запоминания 214 иероглифических ключей (ключей Канси).
+
 ![chitai_na.gif](https://github.com/roosslan/chitai_na/blob/trunk/chitai_na.gif?raw=true)
+
+## Как работает
+
+Программа показывает четыре случайных ключа и вопрос вида «Где ключ N75 mù (му) со значением дерево (tree)?», ниже — описание ключа.
+
+- щелчок по верной картинке — проигрывается видео по этому ключу;
+- щелчок по неверной — звуковой сигнал и подсказка, какой ключ выбран;
+- двойной щелчок по вопросу — следующий вопрос (после верного ответа).
+
+Окно открывается в правом нижнем углу экрана и сворачивается в трей.
+
+## Требования
+
+- Windows;
+- включённый компонент «Windows Media Player»: «Программы и компоненты» → «Включение или отключение компонентов Windows» → «Компоненты для работы с мультимедиа». Без него видеоплееры в окне не создаются.
+
+## Сборка
+
+- Visual Studio 2022 (toolset v143), C++20, MFC (статическая компоновка);
+- Boost с собранной библиотекой Boost.Log. Путь к Boost задаётся переменной окружения `BOOST_ROOT`; библиотеки ожидаются в `%BOOST_ROOT%\lib64-msvc-14.3` (x64) и `%BOOST_ROOT%\lib32-msvc-14.3` (Win32).
+
+Для сборки необходимо открыть `chitai_na.sln` или выполнить:
+
+```
+msbuild chitai_na.sln /p:Configuration=Release /p:Platform=x64
+```
+
+Изображения ключей встраиваются в exe. Видео (`mp4\`) должны лежать рядом с `chitai_na.exe`; логи пишутся в `logs\` там же.
+
+## Лицензия
+
+GNU GPL v3, полный текст — в файле [LICENSE](LICENSE).
