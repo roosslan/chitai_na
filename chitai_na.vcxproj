@@ -83,11 +83,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
-  <!-- Boost: путь берётся из переменной окружения BOOST_ROOT (например, C:\boost_1_88_0) -->
-  <PropertyGroup Condition="'$(Platform)'=='Win32'">
+  <!-- Boost: путь берётся из переменной окружения BOOST_ROOT (например, C:\boost_1_88_0);
+       директорию библиотек можно переопределить через BoostLibDir (так делает CI) -->
+  <PropertyGroup Condition="'$(BoostLibDir)'=='' and '$(Platform)'=='Win32'">
     <BoostLibDir>$(BOOST_ROOT)\lib32-msvc-14.3</BoostLibDir>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Platform)'=='x64'">
+  <PropertyGroup Condition="'$(BoostLibDir)'=='' and '$(Platform)'=='x64'">
     <BoostLibDir>$(BOOST_ROOT)\lib64-msvc-14.3</BoostLibDir>
   </PropertyGroup>
   <PropertyGroup>
@@ -208,6 +209,7 @@
     <ClInclude Include="CWMPSettings.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="helper_functions.h" />
+    <ClInclude Include="quiz_logic.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="resource_lists.h" />
     <ClInclude Include="stdafx.h" />
@@ -220,6 +222,9 @@
     <ClCompile Include="chitai_naAbout.cpp" />
     <ClCompile Include="CResTree.cpp" />
     <ClCompile Include="helper_functions.cpp" />
+    <ClCompile Include="quiz_logic.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

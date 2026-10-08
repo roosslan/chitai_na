@@ -6,16 +6,9 @@
 #include "BitmapPicture.h"
 #include "chitai_naAbout.h"
 #include "helper_functions.h"
+#include "quiz_logic.h"
 
 // chitai_naDlg.h: Headerdatei
-
-constexpr int IDB = 0;	/* Bitmap */
-constexpr int IDW = 1;
-constexpr int IDR = 2;
-constexpr int IDE = 3;
-constexpr int IDRU = 4;
-constexpr int IDP = 5;
-constexpr int IDREX = 6;
 
 // CChitai_naDlg-Dialogfeld
 class CChitai_na_dlg final : public CDialogEx
