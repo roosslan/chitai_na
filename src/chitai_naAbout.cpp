@@ -2,7 +2,7 @@
 #include "afxdialogex.h"
 #include "chitai_na.h"
 #include "chitai_naAbout.h"
-#include "Version.h"
+#include "version.h"
 
 CAboutDlg::CAboutDlg() : CDialogEx(CAboutDlg::IDD)
 {

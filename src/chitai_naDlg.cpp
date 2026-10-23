@@ -18,8 +18,7 @@ CChitai_na_dlg::CChitai_na_dlg(CWnd* pParent /*=NULL*/)
 	r_logger::init_logging();
 }
 
-void CChitai_na_dlg::DoDataExchange(CDataExchange* pDX)
-{
+void CChitai_na_dlg::DoDataExchange(CDataExchange* pDX) {
 	CDialogEx::DoDataExchange(pDX);
 	//**********************************************
 	DDX_Control(pDX, IDC_OCX1, m_player1_);
@@ -34,8 +33,7 @@ void CChitai_na_dlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_EDIT_DESCRIPTION, m_edt_description_);
 }
 
-BOOL CChitai_na_dlg::OnInitDialog()
-{
+BOOL CChitai_na_dlg::OnInitDialog() {
 	LOG_SAVE << "CDialogEx::OnInitDialog();";
 	CDialogEx::OnInitDialog();
 
@@ -67,8 +65,7 @@ BOOL CChitai_na_dlg::OnInitDialog()
 	/* Перемещение окна в правый нижний угол рабочей области (без панели задач) */
 	CRect window_rect, work_area;
 	GetWindowRect(&window_rect);
-	if (!SystemParametersInfo(SPI_GETWORKAREA, 0, &work_area, 0))
-	{
+	if (!SystemParametersInfo(SPI_GETWORKAREA, 0, &work_area, 0)) {
 		work_area.SetRect(0, 0, GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN));
 	}
 	const int x = work_area.right - window_rect.Width();
@@ -89,8 +86,7 @@ BOOL CChitai_na_dlg::OnInitDialog()
 	return TRUE;  // TRUE zurückgeben, wenn der Fokus nicht auf ein Steuerelement gesetzt wird
 }
 
-void CChitai_na_dlg::on_stn_dblclick_textstatic()
-{
+void CChitai_na_dlg::on_stn_dblclick_textstatic() {
 	/* Страховка от зависания: верный ответ дан, но плеер уже не играет
 	   (ошибка открытия файла, остановка и т. п.) — событие MediaEnded не придёт */
 	if (!allow_picture_change_ && answered_player_ >= 0 && !is_player_busy(answered_player_))
@@ -112,8 +108,7 @@ void CChitai_na_dlg::on_stn_dblclick_textstatic()
 
 void CChitai_na_dlg::OnSysCommand(UINT nID, LPARAM lParam)
 {
-	if ((nID & 0xFFF0) == IDM_ABOUTBOX)
-	{		
+	if ((nID & 0xFFF0) == IDM_ABOUTBOX)	{		
 		dlg_about_.DoModal();
 	}
 	else

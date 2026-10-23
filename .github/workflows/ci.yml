@@ -7,15 +7,12 @@ name: CI
 on:
   push:
     branches: [trunk]
-    tags: ['v2.1']
+    tags: ['v*']
   pull_request:
   workflow_dispatch:
 
 permissions:
   contents: read
-
-env:
-  BOOST_VERSION: 1.92.0
 
 jobs:
   build:
@@ -23,56 +20,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Кеш Boost
-        id: boost-cache
-        uses: actions/cache@v4
-        with:
-          path: ${{ runner.temp }}\boost
-          key: boost-${{ env.BOOST_VERSION }}-log-msvc143-x64-static
-
-      - name: Сборка Boost.Log
-        if: steps.boost-cache.outputs.cache-hit != 'true'
-        shell: pwsh
-        run: |
-          $ver = $env:BOOST_VERSION
-          $dir = 'boost_' + ($ver -replace '\.', '_')
-
-          curl.exe -sSfL -o "$env:RUNNER_TEMP\boost.7z" "https://archives.boost.io/release/$ver/source/$dir.7z"
-
-          7z x "$env:RUNNER_TEMP\boost.7z" -o"$env:RUNNER_TEMP" -y | Out-Null
-
-          Set-Location "$env:RUNNER_TEMP\$dir"
-
-          .\bootstrap.bat
-
-          if ($LASTEXITCODE -ne 0) {
-            exit 1
-          }
-
-          .\b2 install `
-            --prefix="$env:RUNNER_TEMP\boost" `
-            --with-log `
-            toolset=msvc-14.3 `
-            address-model=64 `
-            link=static `
-            runtime-link=static `
-            variant=release `
-            threading=multi `
-            -j4 `
-            -d0
-
-          if ($LASTEXITCODE -ne 0) {
-            exit 1
-          }
-
-      - name: Пути к Boost
-        shell: pwsh
-        run: |
-          $inc = Get-ChildItem "$env:RUNNER_TEMP\boost\include" -Directory | Select-Object -First 1
-
-          "BOOST_ROOT=$($inc.FullName)" >> $env:GITHUB_ENV
-          "BoostLibDir=$env:RUNNER_TEMP\boost\lib" >> $env:GITHUB_ENV
 
       - uses: microsoft/setup-msbuild@v2
 
@@ -98,12 +45,12 @@ jobs:
 
           $actual = (
             Select-String `
-              -Path Version.h `
+              -Path src/version.h `
               -Pattern 'FILE_VERSIONSTRING\s+"([0-9.]+)'
           ).Matches[0].Groups[1].Value
 
           if ($actual -ne $expected) {
-            Write-Error "Тег ${{ github.ref_name }} не совпадает с версией $actual в Version.h"
+            Write-Error "Тег ${{ github.ref_name }} не совпадает с версией $actual в src/version.h"
             exit 1
           }
 

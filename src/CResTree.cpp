@@ -1,8 +1,7 @@
 ﻿#include "stdafx.h"
 #include "CResTree.h"
 
-CResTree::CResTree() 
-{	
+CResTree::CResTree() {	
 	idw_radical1.LoadString(IDW_RADICAL1);
 	idr_radical1.LoadString(IDR_RADICAL1);
 	ide_radical1.LoadString(IDE_RADICAL1);
@@ -25,6 +24,5 @@ CResTree::CResTree()
 }
 
 
-CResTree::~CResTree()
-{
+CResTree::~CResTree() {
 }

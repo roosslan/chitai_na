@@ -74,10 +74,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="tests.cpp" />
-    <ClCompile Include="..\quiz_logic.cpp" />
+    <ClCompile Include="..\src\quiz_logic.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\quiz_logic.h" />
+    <ClInclude Include="..\src\quiz_logic.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>

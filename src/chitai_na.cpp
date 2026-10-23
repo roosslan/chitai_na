@@ -57,8 +57,6 @@ BOOL CChitai_naApp::InitInstance()
 	// z.B. zum Namen Ihrer Firma oder Organisation.
 	SetRegistryKey(_T("Vom lokalen Anwendungs-Assistenten generierte Anwendungen"));
 
-	LOG_SAVE << "CChitai_naApp::InitInstance()";
-
 	CChitai_na_dlg dlg;
 	m_pMainWnd = &dlg;
 

@@ -12,12 +12,12 @@
     <ClCompile Include="tests.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\quiz_logic.cpp">
+    <ClCompile Include="..\src\quiz_logic.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\quiz_logic.h">
+    <ClInclude Include="..\src\quiz_logic.h">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>

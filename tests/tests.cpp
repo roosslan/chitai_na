@@ -6,9 +6,9 @@
 #define NOMINMAX
 #include <windows.h>
 
-#include "../quiz_logic.h"
-#include "../resource.h"
-#include "../Version.h"
+#include "../src/quiz_logic.h"
+#include "../src/resource.h"
+#include "../src/version.h"
 
 #include <algorithm>
 #include <cstdio>
