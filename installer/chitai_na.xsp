@@ -1,0 +1,63 @@
+; Проект установки chitai_na для XPSetup (https://github.com/roosslan/cabxp64_installer).
+; Сборка после Release x64:
+;   xpsbuild.exe --build installer\chitai_na.xsp --out dist\installer
+; На CI версия берётся из src\version.h (параметр --version).
+;
+; Установка для текущего пользователя в %LOCALAPPDATA%\Programs: программа пишет
+; журналы в logs\ рядом с exe, в Program Files у неё нет на это прав.
+
+[Version]
+Signature = "$XPSetup$"
+SifVersion = 1
+
+[Product]
+Name = "chitai na"
+Version = 3.24.10.26
+Publisher = roosslan
+ProductCode = {2528B000-BE63-4EF2-9973-18D299632BDE}
+InstallDir = "%LOCALAPPDATA%\Programs\chitai_na"
+AllowChangeDir = 1
+Scope = user
+License = ..\LICENSE
+
+[Directories]
+1 = %INSTALLDIR%
+2 = %INSTALLDIR%\mp4
+
+[Components]
+program
+video
+
+[Component.program]
+Description = "Файлы программы"
+Cabinet = program.cab
+Directory = 1
+Source = ..\x64\Release
+Include = chitai_na.exe
+Recurse = 0
+
+[Component.video]
+Description = "Видео по ключам"
+Cabinet = video.cab
+Directory = 2
+Source = ..\mp4
+Include = *.mp4
+Recurse = 0
+
+[Shortcuts]
+; расположение, имя, объект, параметры, рабочая директория
+Desktop, "chitai na", %INSTALLDIR%\chitai_na.exe, , %INSTALLDIR%
+Programs, "chitai na", %INSTALLDIR%\chitai_na.exe, , %INSTALLDIR%
+
+[Registry]
+
+[KillProcesses]
+chitai_na.exe
+
+[RunAfterInstall]
+
+[Build]
+Output = ..\dist\installer
+SingleFile = chitai_na_setup.exe
+Mode = both
+Compression = LZX:21
