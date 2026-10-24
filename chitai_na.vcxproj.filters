@@ -27,80 +27,83 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="chitai_na.h">
+    <ClInclude Include="src\chitai_na.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="chitai_naDlg.h">
+    <ClInclude Include="src\chitai_naDlg.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="stdafx.h">
+    <ClInclude Include="src\stdafx.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="targetver.h">
+    <ClInclude Include="src\targetver.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
+    <ClInclude Include="src\version.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="CWMPControls.h">
+    <ClInclude Include="src\resource.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="CWMPMedia.h">
+    <ClInclude Include="src\CWMPControls.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="CWMPPlayer4.h">
+    <ClInclude Include="src\CWMPMedia.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="CWMPSettings.h">
+    <ClInclude Include="src\CWMPPlayer4.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="framework.h">
+    <ClInclude Include="src\CWMPSettings.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="chitai_naAbout.h">
+    <ClInclude Include="src\framework.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="CResTree.h">
+    <ClInclude Include="src\chitai_naAbout.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="resource_lists.h">
+    <ClInclude Include="src\CResTree.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="helper_functions.h">
+    <ClInclude Include="src\resource_lists.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="quiz_logic.h">
+    <ClInclude Include="src\helper_functions.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\quiz_logic.h">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="chitai_na.cpp">
+    <ClCompile Include="src\chitai_na.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="chitai_naDlg.cpp">
+    <ClCompile Include="src\chitai_naDlg.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="stdafx.cpp">
+    <ClCompile Include="src\stdafx.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="BitmapPicture.cpp">
+    <ClCompile Include="src\BitmapPicture.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="chitai_naAbout.cpp">
+    <ClCompile Include="src\chitai_naAbout.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="CResTree.cpp">
+    <ClCompile Include="src\CResTree.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="helper_functions.cpp">
+    <ClCompile Include="src\helper_functions.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="quiz_logic.cpp">
+    <ClCompile Include="src\quiz_logic.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="chitai_na.rc">
+    <ResourceCompile Include="res\chitai_na.rc">
       <Filter>Resources</Filter>
     </ResourceCompile>
   </ItemGroup>

@@ -38,7 +38,7 @@
 #include <afxcontrolbars.h>     // MFC-Unterstützung für Menübänder und Steuerleisten
 #include "afxdialogex.h"
 
-#include "Version.h"
+#include "version.h"
 #include <string>
 #include <atlconv.h>
 #include <vector>
@@ -46,20 +46,10 @@
 #include <algorithm>
 #include <filesystem>
 
-#include <boost/log/core.hpp>
-#include <boost/log/expressions.hpp>
-#include <boost/log/utility/setup/file.hpp>
-#include <boost/log/utility/setup/common_attributes.hpp>
-#include <boost/current_function.hpp>
-#include <boost/log/trivial.hpp>
-#include <boost/log/utility/manipulators/add_value.hpp>
-
-namespace expr = boost::log::expressions;
-namespace sinks = boost::log::sinks;
-namespace attrs = boost::log::attributes;
-namespace keywords = boost::log::keywords;
-namespace src = boost::log::sources;
-namespace logging = boost::log;
+#include <fstream>
+#include <sstream>
+#include <mutex>
+#include <format>
 
 #ifdef _UNICODE
 #if defined _M_IX86

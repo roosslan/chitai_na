@@ -83,18 +83,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
-  <!-- Boost: путь берётся из переменной окружения BOOST_ROOT (например, C:\boost_1_88_0);
-       директорию библиотек можно переопределить через BoostLibDir (так делает CI) -->
-  <PropertyGroup Condition="'$(BoostLibDir)'=='' and '$(Platform)'=='Win32'">
-    <BoostLibDir>$(BOOST_ROOT)\lib32-msvc-14.3</BoostLibDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(BoostLibDir)'=='' and '$(Platform)'=='x64'">
-    <BoostLibDir>$(BOOST_ROOT)\lib64-msvc-14.3</BoostLibDir>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ExternalIncludePath>$(BOOST_ROOT);$(ExternalIncludePath)</ExternalIncludePath>
-    <LibraryPath>$(BoostLibDir);$(LibraryPath)</LibraryPath>
-  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -115,7 +103,7 @@
     <ResourceCompile>
       <Culture>0x0407</Culture>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(IntDir);$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -137,7 +125,7 @@
     <ResourceCompile>
       <Culture>0x0407</Culture>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(IntDir);$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -164,7 +152,7 @@
     <ResourceCompile>
       <Culture>0x0407</Culture>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(IntDir);$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -190,7 +178,7 @@
     <ResourceCompile>
       <Culture>0x0407</Culture>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(IntDir);$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -199,33 +187,34 @@
     <None Include="res\chitai_na.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="chitai_na.h" />
-    <ClInclude Include="chitai_naAbout.h" />
-    <ClInclude Include="chitai_naDlg.h" />
-    <ClInclude Include="CResTree.h" />
-    <ClInclude Include="CWMPControls.h" />
-    <ClInclude Include="CWMPMedia.h" />
-    <ClInclude Include="CWMPPlayer4.h" />
-    <ClInclude Include="CWMPSettings.h" />
-    <ClInclude Include="framework.h" />
-    <ClInclude Include="helper_functions.h" />
-    <ClInclude Include="quiz_logic.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="resource_lists.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="targetver.h" />
+    <ClInclude Include="src\chitai_na.h" />
+    <ClInclude Include="src\chitai_naAbout.h" />
+    <ClInclude Include="src\chitai_naDlg.h" />
+    <ClInclude Include="src\CResTree.h" />
+    <ClInclude Include="src\CWMPControls.h" />
+    <ClInclude Include="src\CWMPMedia.h" />
+    <ClInclude Include="src\CWMPPlayer4.h" />
+    <ClInclude Include="src\CWMPSettings.h" />
+    <ClInclude Include="src\framework.h" />
+    <ClInclude Include="src\helper_functions.h" />
+    <ClInclude Include="src\quiz_logic.h" />
+    <ClInclude Include="src\resource.h" />
+    <ClInclude Include="src\resource_lists.h" />
+    <ClInclude Include="src\stdafx.h" />
+    <ClInclude Include="src\targetver.h" />
+    <ClInclude Include="src\version.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BitmapPicture.cpp" />
-    <ClCompile Include="chitai_na.cpp" />
-    <ClCompile Include="chitai_naDlg.cpp" />
-    <ClCompile Include="chitai_naAbout.cpp" />
-    <ClCompile Include="CResTree.cpp" />
-    <ClCompile Include="helper_functions.cpp" />
-    <ClCompile Include="quiz_logic.cpp">
+    <ClCompile Include="src\BitmapPicture.cpp" />
+    <ClCompile Include="src\chitai_na.cpp" />
+    <ClCompile Include="src\chitai_naDlg.cpp" />
+    <ClCompile Include="src\chitai_naAbout.cpp" />
+    <ClCompile Include="src\CResTree.cpp" />
+    <ClCompile Include="src\helper_functions.cpp" />
+    <ClCompile Include="src\quiz_logic.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="stdafx.cpp">
+    <ClCompile Include="src\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -233,7 +222,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="chitai_na.rc" />
+    <ResourceCompile Include="res\chitai_na.rc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="bitmaps\1.bmp" />
@@ -670,7 +659,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties RESOURCE_FILE="chitai_na.rc" />
+      <UserProperties RESOURCE_FILE="res\chitai_na.rc" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

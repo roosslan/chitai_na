@@ -11,7 +11,7 @@
 // Fügen Sie hier manuell bearbeitete Ressourcen hinzu...
 
 /////////////////////////////////////////////////////////////////////////////
-#include "Version.h"
+#include "version.h"
 
 VS_VERSION_INFO VERSIONINFO
  FILEVERSION FILE_MAJOR, FILE_MINOR, FILE_BUILD, FILE_REVISION
