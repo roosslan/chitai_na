@@ -1,8 +1,8 @@
-﻿#define FILE_VERSIONSTRING     "3.23.2.6\0"
+﻿#define FILE_VERSIONSTRING     "3.24.10.26\0"
 #define FILE_MAJOR             3
-#define FILE_MINOR             23
-#define FILE_BUILD             2
-#define FILE_REVISION          6
+#define FILE_MINOR             24
+#define FILE_BUILD             10
+#define FILE_REVISION          26
 
 #define COMPANY_NAME      "ruslan@mail.ch\0"
 #define LEGAL_COPYRIGHT   "Copyright (C) 2019-2026 ruslan@mail.ch\0"

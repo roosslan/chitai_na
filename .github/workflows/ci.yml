@@ -1,12 +1,12 @@
 # Сборка, тесты и релизы chitai_na.
-# push/PR: сборка Release x64, тесты, cab-пакет в артефактах.
-# Тег v* (например, v2.1): то же самое + проверка версии и релиз на GitHub.
+# push/PR: сборка Release x64, тесты, cab-пакет и установщик XPSetup в артефактах.
+# Тег v* (например, v3.24.10.26): то же самое + проверка версии и релиз на GitHub.
 
 name: CI
 
 on:
   push:
-    branches: [trunk]
+    branches: [trunk, 'release/**']
     tags: ['v*']
   pull_request:
   workflow_dispatch:
@@ -53,6 +53,38 @@ jobs:
             Write-Error "Тег ${{ github.ref_name }} не совпадает с версией $actual в src/version.h"
             exit 1
           }
+
+      # ------------------------------------------------------------------
+      # Установщик XPSetup
+      # ------------------------------------------------------------------
+      - name: Версия
+        id: version
+        shell: pwsh
+        run: |
+          $v = (
+            Select-String `
+              -Path src/version.h `
+              -Pattern 'FILE_VERSIONSTRING\s+"([0-9.]+)'
+          ).Matches[0].Groups[1].Value
+
+          "version=$v" >> $env:GITHUB_OUTPUT
+
+      # Релизов XPSetup пока нет: action закреплён на коммите ветки feature/github-action
+      # и сам собирает xpsbuild.exe из исходников. После выпуска релиза заменить на @v1.
+      - name: Установщик
+        id: installer
+        uses: roosslan/cabxp64_installer@cdd733ab7f94864ed206bf397c6829f160ebdf4c
+        with:
+          project: installer/chitai_na.xsp
+          version: ${{ steps.version.outputs.version }}
+          out: dist/installer
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chitai_na-setup
+          path: |
+            ${{ steps.installer.outputs.single }}
+            ${{ steps.installer.outputs.zip }}
 
       # ------------------------------------------------------------------
       # Создание CAB
@@ -155,18 +187,19 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: chitai_na-x64
+          pattern: chitai_na-*
+          merge-multiple: true
 
       - name: Проверка артефакта
         run: |
           ls -lah
-          find . -type f -name '*.cab' -print
+          find . -type f \( -name '*.cab' -o -name '*.exe' -o -name '*.zip' \) -print
 
       - name: Релиз на GitHub
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "${{ github.ref_name }}" *.cab \
+          gh release create "${{ github.ref_name }}" *.cab *.exe *.zip \
             --repo "${{ github.repository }}" \
             --title "chitai na ${{ github.ref_name }}" \
             --generate-notes

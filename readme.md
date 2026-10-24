@@ -18,9 +18,19 @@
 
 Видео (`mp4\`) должны лежать рядом с `chitai_na.exe`; логи пишутся в `logs\` там же.
 
+## Установщик
+
+Установщик собирается [XPSetup](https://github.com/roosslan/cabxp64_installer) по проекту `installer/chitai_na.xsp`: программа ставится для текущего пользователя в `%LOCALAPPDATA%\Programs\chitai_na`, создаются ярлыки на рабочем столе и в меню «Пуск», удаление — через «Программы и компоненты».
+
+Для локальной сборки после Release x64 необходимо выполнить:
+
+```
+xpsbuild.exe --build installer\chitai_na.xsp --out dist\installer
+```
+
 ## CI и релизы
 
-GitHub Actions (`.github/workflows/ci.yml`) при каждом push в `trunk` и в pull request собирает Release x64, запускает тесты и сохраняет cab-пакет (exe, `mp4\`, LICENSE, README) в артефактах сборки.
+GitHub Actions (`.github/workflows/ci.yml`) при каждом push в `trunk` и `release/**` и в pull request собирает Release x64, запускает тесты и сохраняет в артефактах сборки cab-пакет (exe, `mp4\`, LICENSE, README) и установщик (`chitai_na_setup.exe` и `chitai_na_setup.zip`).
 
 Для выпуска релиза необходимо поднять версию в version.h, влить изменения в trunk и отправить тег вида v2.1:
 
@@ -29,4 +39,4 @@ git tag v2.1
 git push origin v2.1
 ```
 
-CI проверит, что тег совпадает с версией в `src/version.h`, и опубликует релиз с cab-пакетом на странице Releases.
+CI проверит, что тег совпадает с версией в `src/version.h`, и опубликует релиз с cab-пакетом и установщиком на странице Releases.
