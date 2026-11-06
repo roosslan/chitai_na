@@ -3,8 +3,8 @@
 ;   xpsbuild.exe --build installer\chitai_na.xsp --out dist\installer
 ; На CI версия берётся из src\version.h (параметр --version).
 ;
-; Установка для текущего пользователя в %LOCALAPPDATA%\Programs: программа пишет
-; журналы в logs\ рядом с exe, в Program Files у неё нет на это прав.
+; Установка для текущего пользователя в %LOCALAPPDATA%\Programs.
+; Журналы программы хранятся отдельно в %LOCALAPPDATA%\chitai_na\logs.
 
 [Version]
 Signature = "$XPSetup$"

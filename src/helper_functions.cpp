@@ -1,13 +1,24 @@
 ﻿#include "stdafx.h"
 #include "helper_functions.h"
 
-CString get_exe_dir() {
-	CString exe_path;
-	const DWORD len = GetModuleFileName(nullptr, exe_path.GetBufferSetLength(MAX_PATH), MAX_PATH);
-	exe_path.ReleaseBuffer(len);
+#include <shlobj.h>
+#include <system_error>
 
-	const int pos = exe_path.ReverseFind(L'\\');
-	return pos >= 0 ? exe_path.Left(pos) : exe_path;
+#pragma comment(lib, "shell32.lib")
+
+CString get_exe_dir() {
+	std::vector<wchar_t> buffer(MAX_PATH);
+	for (;;) {
+		const DWORD len = GetModuleFileNameW(nullptr, buffer.data(), static_cast<DWORD>(buffer.size()));
+		if (len == 0)
+			throw std::system_error(GetLastError(), std::system_category(), "GetModuleFileNameW");
+		if (len < buffer.size()) {
+			const CString exe_path(buffer.data(), static_cast<int>(len));
+			const int pos = exe_path.ReverseFind(L'\\');
+			return pos >= 0 ? exe_path.Left(pos) : exe_path;
+		}
+		buffer.resize(buffer.size() * 2);
+	}
 }
 
 namespace
@@ -17,9 +28,23 @@ namespace
 }
 
 void r_logger::init_logging() {
-	/* Логи пишутся в <директория exe>\logs, а не в mp4\ текущей директории */
-	const CString log_dir = get_exe_dir() + L"\\logs";
-	CreateDirectory(log_dir, nullptr);
+	/* Каталог пользователя доступен для записи независимо от места установки. */
+	PWSTR local_app_data = nullptr;
+	const HRESULT result = SHGetKnownFolderPath(FOLDERID_LocalAppData, 0, nullptr, &local_app_data);
+	if (FAILED(result)) {
+		CoTaskMemFree(local_app_data);
+		OutputDebugStringW(L"chitai_na: cannot locate LocalAppData; file logging disabled\n");
+		return;
+	}
+	const std::filesystem::path log_path = std::filesystem::path(local_app_data) / L"chitai_na" / L"logs";
+	CoTaskMemFree(local_app_data);
+	std::error_code error;
+	std::filesystem::create_directories(log_path, error);
+	if (error) {
+		OutputDebugStringW(L"chitai_na: cannot create log directory; file logging disabled\n");
+		return;
+	}
+	const CString log_dir(log_path.c_str());
 
 	SYSTEMTIME st;
 	GetLocalTime(&st);
@@ -30,6 +55,10 @@ void r_logger::init_logging() {
 	{
 		std::lock_guard lock(log_mutex);
 		log_file.open(file_name.GetString(), std::ios_base::app);
+		if (!log_file.is_open()) {
+			OutputDebugStringW(L"chitai_na: cannot open log file; file logging disabled\n");
+			return;
+		}
 	}
 
 	LOG_SAVE << "chitai_na's r_logger init";

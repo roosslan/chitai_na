@@ -292,7 +292,7 @@ void CChitai_na_dlg::place_elements_on_show()
 
  	m_edt_description_.SetWindowText(m_idrex_guess_radical_);
 
-	for (size_t i = 0; i < 4; i++)
+	for (int i = 0; i < 4; i++)
 	{
 		mp4_[i]->SetWindowPos(nullptr, i*200, 0, 200, 200, SWP_NOACTIVATE | SWP_NOZORDER);
 		mp4_[i]->put_uiMode(_T("none")); // remove WMP controls

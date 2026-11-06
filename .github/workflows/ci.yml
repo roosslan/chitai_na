@@ -69,18 +69,35 @@ jobs:
 
           "version=$v" >> $env:GITHUB_OUTPUT
 
-      # Релизов XPSetup пока нет: action закреплён на коммите ветки feature/github-action
-      # и сам собирает xpsbuild.exe из исходников. После выпуска релиза заменить на @v1.
+      # Action закреплён на полном SHA, сборщик скачивается из указанного релиза.
+      # При недоступности релиза шаг завершится ошибкой без сборки из исходников.
       - name: Установщик
         id: installer
         uses: roosslan/cabxp64_installer@cdd733ab7f94864ed206bf397c6829f160ebdf4c
         with:
+          xpsetup-version: v1.0.0
           project: installer/chitai_na.xsp
           version: ${{ steps.version.outputs.version }}
           out: dist/installer
 
+      - name: Проверка установщика
+        shell: pwsh
+        env:
+          INSTALLER_SINGLE: ${{ steps.installer.outputs.single }}
+          INSTALLER_ZIP: ${{ steps.installer.outputs.zip }}
+        run: |
+          foreach ($path in @($env:INSTALLER_SINGLE, $env:INSTALLER_ZIP)) {
+            if ([string]::IsNullOrWhiteSpace($path) -or -not (Test-Path -LiteralPath $path -PathType Leaf)) {
+              throw "Файл установщика не создан: '$path'"
+            }
+            if ((Get-Item -LiteralPath $path).Length -eq 0) {
+              throw "Пустой файл установщика: $path"
+            }
+          }
+
       - uses: actions/upload-artifact@v4
         with:
+          if-no-files-found: error
           name: chitai_na-setup
           path: |
             ${{ steps.installer.outputs.single }}
@@ -161,14 +178,19 @@ jobs:
           Write-Host "Создан пакет:"
           Get-Item $cab | Format-List FullName, Length
 
-      # Проверяем, что CAB действительно существует
+      # Проверяем наличие и размер CAB перед загрузкой
       - name: Проверка CAB
         shell: pwsh
         run: |
-          Get-ChildItem dist\cab -Filter *.cab
+          $files = @(Get-ChildItem dist\cab -Filter *.cab -File)
+          if ($files.Count -eq 0) { throw 'CAB-файлы не созданы' }
+          foreach ($file in $files) {
+            if ($file.Length -eq 0) { throw "Пустой CAB-файл: $($file.FullName)" }
+          }
 
       - uses: actions/upload-artifact@v4
         with:
+          if-no-files-found: error
           name: chitai_na-x64
           path: dist/cab/*.cab
 
@@ -192,8 +214,20 @@ jobs:
 
       - name: Проверка артефакта
         run: |
-          ls -lah
-          find . -type f \( -name '*.cab' -o -name '*.exe' -o -name '*.zip' \) -print
+          shopt -s nullglob
+          for extension in cab exe zip; do
+            files=( *."$extension" )
+            if (( ${#files[@]} == 0 )); then
+              echo "Нет файлов .$extension" >&2
+              exit 1
+            fi
+            for file in "${files[@]}"; do
+              if [[ ! -f "$file" || ! -s "$file" ]]; then
+                echo "Артефакт отсутствует или пуст: $file" >&2
+                exit 1
+              fi
+            done
+          done
 
       - name: Релиз на GitHub
         env:
